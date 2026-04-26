@@ -86,14 +86,16 @@ class SnippetDetails(View):
         # TODO: Implement logic to get snippet by ID
         #*   RESOLVED!
         if request.user.is_authenticated:
-            snippet = Snippet.objects.filter(Q(id=snippet_id) & (Q(public=True) | Q(user=request.user)))
+            snippet = Snippet.objects.filter(Q(id=snippet_id) & (Q(public=True) | Q(user=request.user))).first()
             if not snippet:
                 return redirect("index")
         else:
-            snippet = Snippet.objects.filter(id=snippet_id, public=True)
+            snippet = Snippet.objects.filter(id=snippet_id, public=True).first()
             if not snippet:
                 return redirect("index")
-        
+        if not snippet:
+            return redirect("index")
+            
         # Add conditions for private snippets
         return render(
             request, "snippets/snippet.html", {"snippet": snippet}
