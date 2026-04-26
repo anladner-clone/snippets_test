@@ -49,7 +49,7 @@ packaging==24.1
     # via gunicorn
 prompt-toolkit==3.0.48
     # via click-repl
-psycopg2==2.9.9
+psycopg2-binary==2.9.9
     # via django-heroku
 pygments==2.18.0
     # via -r requirements.in
