@@ -27,7 +27,7 @@ SECRET_KEY = config("SECRET_KEY", default="Secret Key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ["django-snippets-crud.herokuapp.com/"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = "es-en"
+LANGUAGE_CODE = "es-ar"
 
 TIME_ZONE = "America/Argentina/Buenos_Aires"
 
@@ -119,7 +119,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
