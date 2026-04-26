@@ -119,13 +119,13 @@ class UserSnippets(View):
 class SnippetsByLanguage(View):
     def get(self, request, *args, **kwargs):
         language = self.kwargs["language"]
-        language_name = Language.objects.get(slug=language).id
+        language_id = Language.objects.get(slug=language).id
         # TODO: Fetch snippets based on language
         #*   RESOLVED!
         if request.user.is_authenticated:
-            snippets = Snippet.objects.filter(Q(language=language_name) & (Q(public=True) | Q(user=request.user)))
+            snippets = Snippet.objects.filter(Q(language=language_id) & (Q(public=True) | Q(user=request.user)))
         else:
-            snippets = Snippet.objects.filter(language=language, public=True)
+            snippets = Snippet.objects.filter(language=language_id, public=True)
         return render(request, "index.html", {"snippets": snippets})  # Placeholder
 
 
